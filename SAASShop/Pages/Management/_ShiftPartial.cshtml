@@ -1,0 +1,48 @@
+﻿@using SAASShopDomain
+@model Shift
+@inject SAASShopDataAccess.ISecurity m_sec
+
+<div asp-validation-summary="All"></div>
+
+<div class="row">
+    <!-- Employee Name -->
+    <div class="col-md-4">
+        <span>Employee Name</span>
+        <select asp-for="AppUserId" class="form-select" asp-items="@m_sec.GetAppUsers().Select(x => new SelectListItem{Text = x.FullName, Value = x.Id.ToString()})">
+            <option></option>
+        </select>
+    </div>
+    <!-- Shift Name -->
+    <div class="col-md-4">
+        <span asp-for="ShiftName" class="form-label">Shift Name</span><span asp-validation-for="ShiftName" class="text-danger"></span>
+        <input type="text" asp-for="ShiftName" class="form-control" placeholder="Enter Shift Name" />
+    </div>
+</div>
+
+    <!-- From Date -->
+<div class="row">
+    <div class="col-md-4">
+        <label asp-for="FromDate" class="form-label">From Date</label><span asp-validation-for="FromDate" class="text-danger"></span>
+        <input type="date" asp-for="FromDate" class="form-control" />
+    </div>
+
+    <!-- To Date -->
+    <div class="col-md-4">
+        <label asp-for="ToDate" class="form-label">To Date</label><span asp-validation-for="ToDate" class="text-danger"></span>
+        <input type="date" asp-for="ToDate" class="form-control" />
+    </div>
+</div>
+
+<div class="row">
+    <!-- Start Time -->
+    <div class="col-md-4">
+        <label asp-for="StartTime" class="form-label">Start Time</label><span asp-validation-for="StartTime" class="text-danger"></span>
+        <input type="time" asp-for="StartTime" class="form-control" />
+    </div>
+
+    <!-- End Time -->
+    <div class="col-md-4">
+        <label asp-for="EndTime" class="form-label">End Time</label><span asp-validation-for="EndTime" class="text-danger"></span>
+        <input type="time" asp-for="EndTime" class="form-control" />
+    </div>
+</div>

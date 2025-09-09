@@ -1,0 +1,39 @@
+﻿@page "{Id}"
+@model SAASShop.Pages.Salary.EditPayrollModel
+
+@{
+    ViewData["Title"] = "Edit PayRoll Data";
+}
+
+@section SideMenu {
+    @{
+        await Html.RenderPartialAsync("_DashboardMenuPartial", new MenuModel { Identifier = "salary" });
+    }
+}
+@if (HttpContext.Request.Query["IsDelete"] == "true")
+{
+    <form method="post" asp-page-handler="Delete">
+        <input type="hidden" name="listId" value="@Model.PayRollData.Id" />
+        <partial name="_DeletePartial" model="new DeleteCancelModel { ListId = Model.PayRollData.Id, CancelUrl = Navigator.SalaryManage }" view-data="ViewData" />
+    </form>
+}
+
+<partial name="_DataFormTitlePartial" model='new string("Edit PayRoll Data")' />
+
+
+<div class="card dataForm">
+        <form method="Post">
+            <partial name="_PayrollPartial" model="Model.PayRollData" />
+             @if (HttpContext.Request.Query["IsDelete"] != "true")
+            {
+
+                <div class="rowborder-top p-2">
+                    <div class="col-md-12 text-right">
+                    <hr />
+                    <button type="submit" class="btn btn-blueTwo ms-2 float-end">  Save </button>
+                    <a href="@Navigator.SalaryManage" class="btn btn-sliverOne float-end">Cancel</a>
+                </div>
+            </div>
+            }
+        </form>
+</div>

@@ -1,0 +1,38 @@
+﻿@using SAASShopDomain
+@model LeaveBalance
+@inject SAASShopDataAccess.ISecurity m_sec
+
+<div asp-validation-summary="All"></div>
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+            <span>Employee Name</span>
+            <select asp-for="AppUserId" class="form-select" asp-items="@m_sec.GetAppUsers().Select(x => new SelectListItem{Text = x.FullName, Value = x.Id.ToString()})">
+                <option></option>
+            </select>
+        </div>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Casual Leave Balance -->
+    <div class="col-md-4">
+        <label asp-for="CasualLeaveBalance" class="form-label">Casual Leave</label>
+        <input asp-for="CasualLeaveBalance" class="form-control" type="number" min="0" />
+        <span asp-validation-for="CasualLeaveBalance" class="text-danger"></span>
+    </div>
+
+    <!-- Sick Leave Balance -->
+    <div class="col-md-4">
+        <label asp-for="SickLeaveBalance" class="form-label">Sick Leave</label>
+        <input asp-for="SickLeaveBalance" class="form-control" type="number" min="0" />
+        <span asp-validation-for="SickLeaveBalance" class="text-danger"></span>
+    </div>
+
+    <!-- Bonus Leave Given -->
+    <div class="col-md-4">
+        <label asp-for="BonusLeaveGiven" class="form-label">Bonus Leave</label>
+        <input asp-for="BonusLeaveGiven" class="form-control" type="number" min="0" />
+        <span asp-validation-for="BonusLeaveGiven" class="text-danger"></span>
+    </div>
+</div>

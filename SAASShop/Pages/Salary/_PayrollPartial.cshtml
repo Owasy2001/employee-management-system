@@ -1,0 +1,44 @@
+﻿@using SAASShopDomain
+@model Payroll
+@inject SAASShopDataAccess.ISecurity m_sec
+
+<div asp-validation-summary="All"></div>
+<input type="hidden" asp-for="NetSalary" />
+<div class="row">
+    <div class="col-md-4">
+        <lable>Employee Name</lable>
+        <select asp-for="AppUserId" class="form-control" asp-items="@m_sec.GetAppUsers().Select(x => new SelectListItem{Text = x.FullName, Value = x.Id.ToString()})">
+
+            <option></option>
+        </select>
+    </div>
+</div>
+
+<div class="row">
+    <div class="col-md-4">
+        <label asp-for="BasicSalary" class="form-label">Basic Salary</label><span asp-validation-for="BasicSalary" class="text-danger"></span>
+        <input type="number" asp-for="BasicSalary" class="form-control" placeholder="Enter Basic Salary" />
+    </div>
+    <!-- Bonus -->
+    <div class="col-md-4">
+        <label asp-for="Bonus" class="form-label">Bonus</label><span asp-validation-for="Bonus" class="text-danger"></span>
+        <input type="number" asp-for="Bonus" class="form-control" placeholder="Enter Bonus" />
+    </div>
+</div>
+
+<div class="row">
+    <!-- Deductions -->
+    <div class="col-md-4">
+        <label asp-for="Deductions" class="form-label">Deductions</label><span asp-validation-for="Deductions" class="text-danger"></span>
+        <input type="number" asp-for="Deductions" class="form-control" placeholder="Enter Deductions" />
+    </div>
+    <!-- Pay Date -->
+    <div class="col-md-4">
+        <label asp-for="PayDate" class="form-label">Pay Date</label><span asp-validation-for="PayDate" class="text-danger"></span>
+        <input type="date" asp-for="PayDate" class="form-control" />
+    </div>
+
+</div>
+
+   
+   

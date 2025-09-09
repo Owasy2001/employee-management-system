@@ -1,0 +1,24 @@
+﻿@model SAASShop.Pages.MessageModel
+
+<div class="row p-2">
+    @if (Model.Type == null)
+    {
+        <div class="alert alert-dismissible fade show bg-success text-white" role="alert" style="display: inline-flex; align-items: center; width: auto;">
+            <strong>@Model.Message</strong>
+            <button type="button" class="btn-close ms-2" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true"></span>
+            </button>
+        </div>
+    }
+    else
+    {
+
+        <div class="alert alert-dismissible fade show bg-danger text-white" role="alert" style="display: inline-flex; align-items: center; width: auto;">
+            <strong>@Model.Message</strong>
+            <button type="button" class="btn-close ms-2" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true"></span>
+            </button>
+        </div>
+
+    }
+</div>

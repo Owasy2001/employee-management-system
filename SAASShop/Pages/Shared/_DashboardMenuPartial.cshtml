@@ -1,0 +1,122 @@
+﻿@using SAASShopDomain.User
+@model SAASShop.Pages.MenuModel
+
+
+<div>
+    <div id="dash-menu" class="dash-menu" style="font-size:14px;">
+        <ul class="nav flex-column">
+            <div><button class="btn float-right closebtn" id="closebtn" onclick="closeSideMenu()"><i class="fa fa-close"></i></button></div>
+
+            <li class="nav-item" id="manageuser">
+                <a href="@Navigator.ManageUser">Manage User</a>
+            </li>
+            <li class="nav-item" id="salary">
+                <a href="@Navigator.SalaryManage">Salary Manage</a>
+            </li>
+            <li class="nav-item @(Model.Identifier == "employee" || Model.Identifier == "shift" || Model.Identifier == "leave"||Model.Identifier == "leavereq" || Model.Identifier == "overtime" ? "open" : "")" id="employee">
+                <a href="javascript:void(0);">Employee Manage <span class="menu-arrow">&#9660;</span></a>
+                <ul class="nav flex-column sub-menu">
+                    <div class="border-top"></div>
+                    <li class="nav-item" id="shift">
+                        <a href="@Navigator.ShiftManage">Shift Manage</a>
+                    </li>
+                    <li class="nav-item" id="leave">
+                        <a href="@Navigator.LeaveManage">Leave Manage</a>
+                    </li>
+                    <li class="nav-item" id="leavereq">
+                        <a href="@Navigator.LeaveRequest">Leave Request</a>
+                    </li>
+                    
+                    <li class="nav-item" id="overtime">
+                        <a href="@Navigator.OvertimeManage">Overtime Manage</a>
+                    </li>
+                    <div class="border-top"></div>
+                </ul>
+            </li>
+            <li class="nav-item @(Model.Identifier == "takeAttendance" || Model.Identifier == "viewAttendance" || Model.Identifier == "AttendanceManage" ? "open" : "")" id="employeeAttandance">
+                <a href="javascript:void(0);">Attendance Manage <span class="menu-arrow">&#9660;</span></a>
+                <ul class="nav flex-column sub-menu">
+                    <div class="border-top"></div>
+                    <li class="nav-item" id="takeAttendance">
+                        <a href="@Navigator.EmployeeAttendence">Give Attendance</a>
+                    </li>
+                    <li class="nav-item" id="viewAttendance">
+                        <a href="@Navigator.EmployeeAttendenceList">View Attendance</a>
+                    </li>
+                    <li class="nav-item" id="AttendanceManage">
+                        <a href="@Navigator.EmployeeAttendenceManage">Attendance Manage</a>
+                    </li>
+                    <div class="border-top"></div>
+                </ul>
+            </li>
+
+        </ul>
+        <span id="Dashboard"></span>
+    </div>
+</div>
+
+<script type="text/javascript">
+    document.getElementById("@Model.Identifier").className = "active";
+</script>
+
+<script>
+            $(document).ready(function () {
+        const openMenus = JSON.parse(localStorage.getItem('openMenus')) || [];
+        openMenus.forEach(id => {
+            const $item = $("#" + id);
+            $item.addClass("open");
+            $item.find("> a .menu-arrow").html("&#9650;"); // ▲ if open
+        });
+
+        $(".nav-item > a[href='javascript:void(0);']").on("click", function (e) {
+            e.preventDefault();
+            const $parent = $(this).parent();
+            $parent.toggleClass("open");
+
+            // Change arrow
+            const $arrow = $(this).find(".menu-arrow");
+            if ($parent.hasClass("open")) {
+                $arrow.html("&#9650;"); // ▲ Up Arrow when open
+            } else {
+                $arrow.html("&#9660;"); // ▼ Down Arrow when closed
+            }
+
+            // Save open menus
+            const currentlyOpen = $(".nav-item.open").map(function () {
+                return this.id;
+            }).get();
+            localStorage.setItem('openMenus', JSON.stringify(currentlyOpen));
+        });
+
+        $(".sub-menu a").on("click", function (e) {
+            e.stopPropagation();
+        });
+    });
+</script>
+
+
+<style>
+    .nav-item {
+        position: relative;
+    }
+
+        .nav-item .sub-menu {
+            display: none;
+            list-style: none;
+            padding: 10px;
+            /* background-color: #525292; */ */ border: 1px 0px 1px 0px solid #dee2e6;
+            border-radius: 5px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            transition: all 0.3s ease;
+        }
+
+        .nav-item.open .sub-menu {
+            display: block;
+        }
+
+    .menu-arrow {
+        float: right;
+        font-size: 8px;
+        margin-left: 10px;
+    }
+</style>

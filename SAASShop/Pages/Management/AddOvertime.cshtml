@@ -1,0 +1,26 @@
+﻿@page
+
+@model SAASShop.Pages.Management.AddOvertimeModel
+@{
+	ViewData["Title"] = "Manage Overtime";
+}
+@section SideMenu {
+    @{
+        await Html.RenderPartialAsync("_DashboardMenuPartial", new MenuModel { Identifier = "overtime" });
+    }
+}
+
+<partial name="_DataFormTitlePartial" model='new string("Add overtime")' />
+<div class="card dataForm">
+    <form method="Post">
+        <partial name="_OvertimePartial" model="Model.overtime" />
+
+        <div class="rowborder-top p-2">
+            <div class="col-md-12 text-right">
+                <hr />
+                <button type="submit" class="btn btn-blueTwo ms-2 float-end"> Save </button>
+                <a href="@Navigator.OvertimeManage" class="btn btn-sliverOne float-end">Cancel</a>
+            </div>
+        </div>
+    </form>
+</div>

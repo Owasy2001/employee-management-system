@@ -1,0 +1,11 @@
+F:\SchoolProject\SAASShopDomain\bin\Debug\net8.0\SAASShopDomain.deps.json
+F:\SchoolProject\SAASShopDomain\bin\Debug\net8.0\SAASShopDomain.dll
+F:\SchoolProject\SAASShopDomain\bin\Debug\net8.0\SAASShopDomain.pdb
+F:\SchoolProject\SAASShopDomain\obj\Debug\net8.0\SAASShopDomain.GeneratedMSBuildEditorConfig.editorconfig
+F:\SchoolProject\SAASShopDomain\obj\Debug\net8.0\SAASShopDomain.AssemblyInfoInputs.cache
+F:\SchoolProject\SAASShopDomain\obj\Debug\net8.0\SAASShopDomain.AssemblyInfo.cs
+F:\SchoolProject\SAASShopDomain\obj\Debug\net8.0\SAASShopDomain.csproj.CoreCompileInputs.cache
+F:\SchoolProject\SAASShopDomain\obj\Debug\net8.0\SAASShopDomain.dll
+F:\SchoolProject\SAASShopDomain\obj\Debug\net8.0\refint\SAASShopDomain.dll
+F:\SchoolProject\SAASShopDomain\obj\Debug\net8.0\SAASShopDomain.pdb
+F:\SchoolProject\SAASShopDomain\obj\Debug\net8.0\ref\SAASShopDomain.dll

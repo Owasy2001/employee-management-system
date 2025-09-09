@@ -1,0 +1,45 @@
+﻿@page
+@model SAASShop.Pages.Security.LoginModel
+
+
+
+@if (!string.IsNullOrEmpty(Request.Query["ReturnUrl"]))
+{
+    Layout = "_IntroLayout";
+    ViewData["Title"] = "CodeInDiary";
+}
+
+@if (string.IsNullOrEmpty(Request.Query["ReturnUrl"]))
+{
+
+    Layout = "_LoginLayout";
+    ViewData["Title"] = "SAAS Shop User Login";
+
+    <h2>Enter Your Credentials</h2>
+    <hr />
+
+    @if (TempData["Message"] != null)
+    {
+        <partial name="_MessagePartial" model='new MessageModel { Message = TempData["Message"], Type="Err" }' />
+    }
+
+    <form method="post">
+
+
+        <div class="form-group">
+            Login ID<span asp-validation-for="UserLogin.LoginID"></span>
+            <input class="form-control" asp-for="UserLogin.LoginID" type="text" placeholder="Login ID" />
+        </div>
+        <div class="form-group">
+            Password <span asp-validation-for="UserLogin.Password"></span>
+            <input type="password" class="form-control" asp-for="UserLogin.Password" placeholder="Password" />
+        </div>
+
+        <a href="@Navigator.LoginDetail" class="float-right"><p class="text-right">Reset Password</p></a>
+
+        <div class="form-group">
+            <button type="submit" class="btn btn-lg btn-blueOne align-right"> Submit </button>
+        </div>
+
+    </form>
+}

@@ -1,0 +1,26 @@
+﻿@page "{isPasswordReset?}"
+@model SAASShop.Pages.Security.MFAVerificationModel
+
+@{
+     Layout = "_LoginLayout";
+    ViewData["Title"] = "User Verification";
+}
+
+ <h2>Security Code Verification</h2><hr />
+
+  @if (TempData["Message"] != null)
+{
+    <partial name="_MessagePartial" model='new MessageModel { Message = TempData["Message"], Type="Err" }' />
+}
+ <form method="post">
+
+    <div class="form-group">
+        <span>Enter Verification Code</span><span asp-validation-for="SecurityCode"></span>
+        <input class="form-control" asp-for="SecurityCode" type="text" />
+    </div>
+
+    <div class="form-group">
+        <button type="submit" class="btn btn-blueOne"> Submit </button>
+    </div>
+
+</form>

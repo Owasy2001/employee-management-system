@@ -1,0 +1,73 @@
+﻿@page
+@model SAASShop.Pages.Management.OvertimeManageModel
+@{
+	ViewData["Title"] = "Overtime Manage";
+}
+@section SideMenu {
+    @{
+        await Html.RenderPartialAsync("_DashboardMenuPartial", new MenuModel { Identifier = "overtime" });
+    }
+}
+
+@if (TempData["Message"] != null)
+{
+    <partial name="_MessagePartial" model='new MessageModel { Message = TempData["Message"] }' />
+}
+<partial name="_DataFormTitlePartial" model='new string("Overtime Management")' />
+
+<div class="card">
+
+    <div class="mt-2">
+        <a href="@Navigator.AddOvertime" class="btn btn-sm btn-greenOne">Add new</a>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <table class="table table-striped table-bordered table-hover">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Department</th>
+                        <th scope="col">NetSalary</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    @foreach (var user in Model.UserOvertime)
+
+                    {
+
+
+                        <tr>
+                            <td>@user.FullName</td>
+                            <td>@user.Email</td>
+                            <td>@user.Role</td>
+                            <td>
+                                @if (user != null)
+                                {
+                                    @user.OvertimeNetSalary
+                                }
+                            </td>
+                            <td>
+                                @if (user != null)
+                                {
+                                    @user.OvertimeDate
+                                }
+                            </td>
+
+                            <td>
+
+                                <a href="@Navigator.EditOvertime/@user.Id" class="btn btn-xs btn-greenTwo">Edit</a>
+                               
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

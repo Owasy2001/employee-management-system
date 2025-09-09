@@ -1,0 +1,35 @@
+﻿@model SAASShop.Pages.MenuModel
+
+
+<div id="caseMenu">
+    <div style="font-size:14px;">
+        <ul class="nav flex-column">
+            <li><button class="btn float-right closebtn" id="closeCaseMenuBtn" onclick="closeSideMenu()"><i class="fa fa-close"></i></button></li>
+
+            <li class="nav-item">
+                <div style="margin-top:5px;">
+                    <div style="color:#fff; text-align:center;">
+                        <span>@User.Claims.FirstOrDefault(s => s.Type == System.Security.Claims.ClaimTypes.GivenName).Value</span>
+                    </div>
+                </div>
+            </li>
+
+           @*  <li class="nav-item">
+                <a title="Log Off" asp-page="@Navigator.Login" asp-page-handler="LogOff">Log out</a>
+                <div class="border-top"></div>
+            </li>
+   *@
+        </ul>
+    </div>
+</div>
+
+<script type="text/javascript">
+    document.getElementById("@Model.Identifier").className = "active";
+
+    $(document).ready(function () {
+        $("#MenuLeftSide").animate({
+            scrollTop: $('#@Model.Identifier').offset().top
+        }, 'slow');
+
+    });
+</script>

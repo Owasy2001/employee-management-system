@@ -1,0 +1,18 @@
+﻿@model SAASShop.Pages.DeleteCancelModel
+
+<div class="row p-2">
+
+    <div class="col">
+        <strong>The following record will be deleted. Please Confirm.</strong>
+    </div>
+</div>
+
+<div class="row p-2">
+
+    <div class="col">
+       @*  <a asp-route-listId="@Model.ListId" class="btn btn-redOne mr-2" asp-page-handler="Delete">Confirm Delete</a> *@
+        <button type="submit" class="btn btn-redOne mr-2" asp-page-handler="Delete">Confirm Delete</button>
+
+        <a href="@Model.CancelUrl" class="btn btn-sliverOne mr-2">Cancel</a>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+F:\SchoolProject\SAASShopDataAccess\bin\Debug\net8.0\SAASShopDataAccess.deps.json
+F:\SchoolProject\SAASShopDataAccess\bin\Debug\net8.0\SAASShopDataAccess.dll
+F:\SchoolProject\SAASShopDataAccess\bin\Debug\net8.0\SAASShopDataAccess.pdb
+F:\SchoolProject\SAASShopDataAccess\bin\Debug\net8.0\CommonLib.dll
+F:\SchoolProject\SAASShopDataAccess\bin\Debug\net8.0\SAASShopDomain.dll
+F:\SchoolProject\SAASShopDataAccess\bin\Debug\net8.0\CommonLib.pdb
+F:\SchoolProject\SAASShopDataAccess\bin\Debug\net8.0\SAASShopDomain.pdb
+F:\SchoolProject\SAASShopDataAccess\obj\Debug\net8.0\SAASShopDataAccess.csproj.AssemblyReference.cache
+F:\SchoolProject\SAASShopDataAccess\obj\Debug\net8.0\SAASShopDataAccess.GeneratedMSBuildEditorConfig.editorconfig
+F:\SchoolProject\SAASShopDataAccess\obj\Debug\net8.0\SAASShopDataAccess.AssemblyInfoInputs.cache
+F:\SchoolProject\SAASShopDataAccess\obj\Debug\net8.0\SAASShopDataAccess.AssemblyInfo.cs
+F:\SchoolProject\SAASShopDataAccess\obj\Debug\net8.0\SAASShopDataAccess.csproj.CoreCompileInputs.cache
+F:\SchoolProject\SAASShopDataAccess\obj\Debug\net8.0\SAASShop.88AEF44E.Up2Date
+F:\SchoolProject\SAASShopDataAccess\obj\Debug\net8.0\SAASShopDataAccess.dll
+F:\SchoolProject\SAASShopDataAccess\obj\Debug\net8.0\refint\SAASShopDataAccess.dll
+F:\SchoolProject\SAASShopDataAccess\obj\Debug\net8.0\SAASShopDataAccess.pdb
+F:\SchoolProject\SAASShopDataAccess\obj\Debug\net8.0\ref\SAASShopDataAccess.dll

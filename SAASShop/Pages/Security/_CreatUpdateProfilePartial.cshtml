@@ -1,0 +1,69 @@
+﻿@model SAASShopDomain.RegisterViewModel
+
+
+            <!-- First Name -->
+            <div class="row">
+                <div class="col-md-4">
+                    <label asp-for="FirstName" class="form-label">First Name</label>
+                    <input type="text" asp-for="FirstName" class="form-control" placeholder="First Name" />
+                    <span asp-validation-for="FirstName" class="text-danger"></span>
+                </div>
+                <!-- Last Name -->
+                <div class="col-md-4">
+                    <label asp-for="LastName" class="form-label">Last Name</label>
+                    <input type="text" asp-for="LastName" class="form-control" placeholder="Last Name" />
+                    <span asp-validation-for="LastName" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Email -->
+                <div class="col-md-4">
+                    <label asp-for="Email" class="form-label">Email</label>
+                    <input type="email" asp-for="Email" class="form-control" placeholder="Email" />
+                    <span asp-validation-for="Email" class="text-danger"></span>
+                </div>
+                <!-- Phone -->
+                <div class="col-md-4">
+                    <label asp-for="Phone" class="form-label">Phone</label>
+                    <input type="text" asp-for="Phone" class="form-control" placeholder="Phone" />
+                    <span asp-validation-for="Phone" class="text-danger"></span>
+                </div>
+            </div>
+
+            <div class="row">
+                <!-- Login ID -->
+                <div class="col-md-4">
+                    <label asp-for="LoginId" class="form-label">Login ID</label>
+                    <input type="text" asp-for="LoginId" class="form-control" placeholder="Login ID" />
+                    <span asp-validation-for="LoginId" class="text-danger"></span>
+                </div>
+                <!-- Employee Role -->
+
+                <div class="col-md-4">
+                    <span>Employee Role</span><span asp-validation-for="EmployeeRoles" class="text-danger"></span>
+                    <select asp-for="EmployeeRoles" class="custom-select mr-sm-2">
+                        <option value="">Select Role</option>
+                        <option value="Administrator">Administrator</option>
+                        <option value="ManagingDirector">Managing Director</option>
+                    </select>
+                </div>
+               
+            </div>
+
+            <div class="row">
+                <!-- Password -->
+                <div class="col-md-4">
+                    <label asp-for="Password" class="form-label">Password</label>
+                    <input type="password" asp-for="Password" class="form-control" placeholder="Password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <!-- Confirm Password -->
+                <div class="col-md-4">
+                    <label asp-for="ConfirmPassword" class="form-label">Confirm Password</label>
+                    <input type="password" asp-for="ConfirmPassword" class="form-control" placeholder="Confirm Password" />
+                    <span asp-validation-for="ConfirmPassword" class="text-danger"></span>
+                </div>
+               
+            </div>
+   

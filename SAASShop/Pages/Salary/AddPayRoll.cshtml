@@ -1,0 +1,31 @@
+﻿@page
+
+@model SAASShop.Pages.Salary.AddPayRollModel
+@{
+    ViewData["Title"] = "Manage Salary";
+}
+@section SideMenu {
+    @{
+        await Html.RenderPartialAsync("_DashboardMenuPartial", new MenuModel { Identifier = "salary" });
+    }
+}
+
+<partial name="_DataFormTitlePartial" model='new string("Add Salary")' />
+
+<div class="card dataForm">
+        <form method="Post">
+            <partial name="_PayrollPartial" model="Model.PayRoll" />
+
+            <div class="rowborder-top p-2">
+                <div class="col-md-12 text-right">
+                    <hr />
+                    <button type="submit" class="btn btn-blueTwo ms-2 float-end">  Save </button>
+                    <a href="@Navigator.SalaryManage" class="btn btn-sliverOne float-end">Cancel</a>
+                </div>
+            </div>
+        </form>
+</div>
+
+
+
+

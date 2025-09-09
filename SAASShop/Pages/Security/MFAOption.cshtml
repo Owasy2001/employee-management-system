@@ -1,0 +1,79 @@
+﻿@page "{isPasswordReset?}"
+@model SAASShop.Pages.Security.MFAOptionModel
+
+@{
+    Layout = "_LoginLayout";
+    ViewData["Title"] = "Secure Code Delivery";
+}
+
+ <h2>Select a Method</h2><hr />
+
+ @if (TempData["Message"] != null)
+{
+    <partial name="_MessagePartial" model='new MessageModel { Message = TempData["Message"], Type="Err" }' />
+}
+
+ <form method="post">
+    <input type="hidden" asp-for="PhoneNumber" />
+    <input type="hidden" asp-for="Email">
+    <input type="hidden" asp-for="MaskedPhoneNumber" />
+    <input type="hidden" asp-for="MaskedEmail">
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-md-12">
+                    <strong>Send Verification Code to : </strong> <span asp-validation-for="Selectiontype"></span>
+            </div>
+        </div>
+                       
+        <div class="row">
+             <div class="col-md-3">
+                 Email
+             </div>
+            @if(!string.IsNullOrEmpty(Model.Email))
+            {
+             <div class="col-md-6">
+                <label class="control-radio">
+                    <input type="radio" asp-for="Selectiontype" value="1" id="SMail" />
+                    <span>[@Model.MaskedEmail]</span>
+                    <div class="customRadio"></div> &nbsp;
+                </label>
+            </div>
+            }
+           
+        </div>
+                       
+        <div class="row">
+            <div class="col-md-3">
+                 Cell Phone
+             </div>
+              @if(!string.IsNullOrEmpty(Model.PhoneNumber))
+            {
+            <div class="col-md-6">
+                <label class="control-radio">
+                    <input type="radio" asp-for="Selectiontype" value="2" id="SPhone" />
+                     <span>[@Model.MaskedPhoneNumber]</span>
+                    <div class="customRadio"></div> &nbsp;
+                </label>
+            </div>
+            }
+           
+        </div>
+                       
+    </div>
+
+    @if(!(string.IsNullOrEmpty(Model.Email) && string.IsNullOrEmpty(Model.PhoneNumber)))
+    {
+    <div class="form-group">
+        <button type="submit" class="btn btn-blueOne"> Submit </button>
+    </div>
+    }
+    else
+    {
+        <div class="badge badge-danger p-1">
+            <strong>Email or Phone is required to send a Code. Please contact your IT. Your verification cannot be completed at this time.</strong>
+        </div>
+    }
+   
+
+</form>

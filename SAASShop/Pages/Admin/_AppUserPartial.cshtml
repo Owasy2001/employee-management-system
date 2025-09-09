@@ -1,0 +1,93 @@
+﻿@model SAASShopDomain.User.AppUser
+@inject SAASShopDataAccess.ISecurity SecurityMan
+
+@{
+	var rolesList = new SelectList(SecurityMan.GetAllAppRoles(), "Id", "Description");
+}
+
+<div asp-validation-summary="All"></div>
+
+@if (Model.Id > 0)
+{
+	<input type="hidden" asp-for="Id" />
+	<input type="hidden" asp-for="Password" />
+}
+
+<div class="row">
+	<div class="col-md-4">
+		<div class="form-group">
+			<span asp-for="FirstName" class="form-label">First Name</span><span asp-validation-for="FirstName" class="text-danger"></span>
+			<input asp-for="FirstName" class="form-control" placeholder="Enter your first name" />
+		</div>
+	</div>
+
+	<div class="col-md-4">
+		<div class="form-group">
+			<span asp-for="LastName" class="form-label">Last Name</span><span asp-validation-for="LastName" class="text-danger"></span>
+			<input asp-for="LastName" class="form-control" placeholder="Enter your last name" />
+		</div>
+	</div>
+
+</div>
+
+<div class="row">
+	<div class="col-md-4">
+		<div class="form-group">
+			<span asp-for="Phone" class="form-label">Phone</span><span asp-validation-for="Phone" class="text-danger"></span>
+			<input asp-for="Phone" class="form-control" placeholder="Enter your phone number" />
+		</div>
+	</div>
+
+	<div class="col-md-4">
+		<div class="form-group">
+			<span asp-for="Email" class="form-label">Email</span><span asp-validation-for="Email" class="text-danger"></span>
+			<input asp-for="Email" class="form-control" placeholder="Enter your email address" />
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-4">
+		<div class="form-group">
+			<span asp-for="LoginId" class="form-label">Login ID</span><span asp-validation-for="LoginId" class="text-danger"></span>
+			<input asp-for="LoginId" class="form-control" placeholder="Enter your login ID" />
+		</div>
+	</div>
+
+	@if (Model.Id == 0)
+	{
+		<div class="col-md-4">
+
+			<div class="form-group">
+				<span asp-for="Password" class="form-label">Password</span><span asp-validation-for="Password" class="text-danger"></span>
+				<input asp-for="Password" class="form-control" type="password" placeholder="Enter your password" />
+			</div>
+
+		</div>
+	}
+
+</div>
+
+@if (Model.Id == 0)
+{
+	<div class="row">
+		<div class="col-md-4">
+			<lable>User Role</lable>
+			<select asp-for="RoleId" class="form-control" asp-items="@rolesList">
+				<option></option>
+			</select>
+		</div>
+	</div>
+}
+else
+{
+	<div class="row">
+		<div class="col-md-4">
+			<lable>User Role</lable>
+			<select asp-for="RoleId" class="form-control" asp-items="@rolesList"></select>
+		</div>
+	</div>
+}
+
+
+<partial name="_ValidationScriptsPartial" />

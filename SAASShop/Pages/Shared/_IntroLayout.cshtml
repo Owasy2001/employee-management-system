@@ -1,0 +1,42 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>@ViewData["Title"] - CodeInDiary</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <environment names="Development,Test,Uat,Production">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/css/SAASShopStyle.min.css" />
+
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    </environment>
+
+</head>
+
+
+<body vocab="http://schema.org/" style="background-color:#e5e5e5;">
+
+    <main role="main">
+        <div class="container pt-4" style="min-height:500px;">
+            <div class="login-panel shadow p-3 container bg-white dataForm" style="max-width:600px;">
+                @RenderBody()
+
+
+                <div style="padding-top:50px;">
+                    <div class="card">
+                        <div class="card-body">
+                            <p class="text-center"><strong>This will be the introduction page about us.</strong> </p>
+                            <p class="text-center"><strong>To our customers</strong> </p>
+                            <a href="@Navigator.Login" class="float-right"><p class="text-right">Dashboard</p></a>
+
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+    </main>
+</body>
+</html>

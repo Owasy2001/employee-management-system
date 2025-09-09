@@ -1,0 +1,12 @@
+﻿@page
+@model SAASShop.Pages.Admin.DashboardModel
+
+@{
+    ViewData["Title"] = "Dashboard";
+}
+
+@section SideMenu {
+    @{
+        await Html.RenderPartialAsync("_DashboardMenuPartial", new MenuModel { Identifier = "myProfile" });
+    }
+}

@@ -1,0 +1,63 @@
+﻿@page
+@model SAASShop.Pages.Management.ShiftManageModel
+@{
+	ViewData["Title"] = "Shift Manage";
+}
+@section SideMenu {
+    @{
+        await Html.RenderPartialAsync("_DashboardMenuPartial", new MenuModel { Identifier = "shift" });
+    }
+}
+@if (TempData["Message"] != null)
+{
+    <partial name="_MessagePartial" model='new MessageModel { Message = TempData["Message"] }' />
+}
+<partial name="_DataFormTitlePartial" model='new string("Shift Management")' />
+
+
+<div class="card">
+    <div class="mt-2">
+        <a href="@Navigator.AddShift" class="btn btn-sm btn-greenOne">Add New</a>
+    </div>
+    <div class="row">
+        <div class="col">
+            <table class="table table-striped table-bordered table-hover">
+                <thead class="thead-light">
+                    <tr>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Department</th>
+                        <th scope="col">ShiftName</th>
+                        <th scope="col">FromDate</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+
+
+                    @foreach (var user in Model.Usershift)
+
+                    {
+
+
+                        <tr>
+                            <td>@user.FullName</td>
+                            <td>@user.Email</td>
+                            <td>@user.Role</td>
+                            <td>@user.ShiftName</td>
+                            <td> @user.FromDate</td>
+
+                            <td>
+
+                                <a href="@Navigator.EditShift/@user.Id" class="btn btn-xs btn-greenTwo">Edit</a>
+                                
+                                @*  <a href="@Navigator.EditPayRoll/@user.Id?IsDelete=true" class="btn btn-xs btn-redOne">Delete</a>  *@ 
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+

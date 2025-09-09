@@ -1,0 +1,29 @@
+﻿@model SAASShop.Pages.CommitCancelModel
+
+@* @{bool HasPrivilige = bool.Parse(User.Claims.FirstOrDefault(s => s.Type == "CanUnlock").Value);} *@
+
+
+<div class="row border-top p-2">
+
+    <div class="col">
+        @if (Model.SaveDisabled != true)
+        @* @if (Model.SaveDisabled != true && HasPrivilige) *@
+        {
+            <input type="submit" value="Update" class="btn btn-blueTwo float-right" />
+        }
+
+        @if (!string.IsNullOrEmpty(Model.CancelUrl))
+        {
+            <a href="@Model.CancelUrl" class="btn btn-sliverOne float-right mr-2">Cancel</a>
+        }
+
+        <div>
+            <strong class="px-2 py-1 btn-blueTwo float-right mr-2" id="SaveMsg" style="display:none">Updating... Please Wait.</strong>
+        </div>
+    </div>
+</div>
+
+<input type="hidden" asp-for="CancelUrl" />
+
+<script src="~/js/ButtonControl.js"></script>
+

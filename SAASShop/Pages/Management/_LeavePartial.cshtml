@@ -1,0 +1,59 @@
+﻿@using SAASShopDomain
+@model Leave
+@inject SAASShopDataAccess.ISecurity m_sec
+
+<div asp-validation-summary="All"></div>
+
+@{
+    var userId = int.Parse(User.Claims.FirstOrDefault(x => x.Type == "UserId").Value);
+    var showApproval = (bool)ViewData["ShowApproval"];
+}
+
+<input type="hidden" asp-for="AppUserId" value="@userId" />
+
+<div class="row">
+    <!-- Start Date -->
+    <div class="col-md-4">
+        <label asp-for="StartDate" class="form-label">Start Date</label>
+        <input type="date" asp-for="StartDate" class="form-control" />
+        <span asp-validation-for="StartDate" class="text-danger"></span>
+    </div>
+    <!-- End Date -->
+    <div class="col-md-4">
+        <label asp-for="EndDate" class="form-label">End Date</label>
+        <input type="date" asp-for="EndDate" class="form-control" />
+        <span asp-validation-for="EndDate" class="text-danger"></span>
+    </div>
+</div>
+
+<div class="row">
+    <!-- Reason -->
+    <div class="col-md-8">
+        <label asp-for="Reason" class="form-label">Reason</label>
+        <textarea asp-for="Reason" class="form-control" placeholder="Enter reason for leave"></textarea>
+        <span asp-validation-for="Reason" class="text-danger"></span>
+    </div>
+</div>
+
+<div class="row">
+
+    <!-- Leave Type -->
+    <div class="col-md-4">
+        <label asp-for="LeaveType" class="form-label">Leave Type</label>
+        <select asp-for="LeaveType" class="form-control" asp-items="Html.GetEnumSelectList<SAASShopDomain.Leaves>()">
+            <option></option>
+        </select>
+        <span asp-validation-for="LeaveType" class="text-danger"></span>
+    </div>
+
+    @if (showApproval)
+    {
+        <div class="col-md-4">
+            <label asp-for="ApprovesType" class="form-label">Approves Type</label>
+            <select asp-for="ApprovesType" class="form-control" asp-items="Html.GetEnumSelectList<SAASShopDomain.Approves>()">
+                <option></option>
+            </select>
+            <span asp-validation-for="ApprovesType" class="text-danger"></span>
+        </div>
+    }
+</div>

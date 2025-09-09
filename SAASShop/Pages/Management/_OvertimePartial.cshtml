@@ -1,0 +1,36 @@
+﻿@using SAASShopDomain
+@model Overtime
+@inject SAASShopDataAccess.ISecurity m_sec
+
+<div asp-validation-summary="All"></div>
+
+    <input type="hidden" asp-for="Id" />
+    <input type="hidden" asp-for="OvertimeNetSalary" />
+
+<div class="row">
+    <div class="col-md-4">
+        <div class="form-group">
+        <span>Employee Name</span>
+        <select asp-for="AppUserId" class= "form-select" asp-items="@m_sec.GetAppUsers().Select(x => new SelectListItem{Text = x.FullName, Value = x.Id.ToString()})">
+            <option></option>
+        </select>
+    </div>
+    </div>
+</div>
+<div class="row">
+    <!-- Overtime Hours -->
+    <div class="col-md-4">
+        <div class="form-group">
+        <span asp-for="OvertimeHour" class="form-label">Overtime Hours</span><span asp-validation-for="OvertimeHour" class="text-danger"></span>
+        <input type="number" asp-for="OvertimeHour" class="form-control" placeholder="Enter Overtime Houres" />
+    </div>
+    </div>
+
+    <div class="col-md-4">
+        <div class="form-group">
+        <span asp-for="OvertimeDate" class="form-label">Overtime Date</span><span asp-validation-for="OvertimeDate" class="text-danger"></span>
+        <input type="date" asp-for="OvertimeDate" class="form-control"/>
+    </div>
+    </div>
+</div>
+

@@ -1,0 +1,89 @@
+﻿@page
+@using SAASShopDomain.User
+@model SAASShop.Pages.Security.UserProfileModel
+
+@{
+    ViewData["Title"] = "My Profile";
+}
+
+@section SideMenu {
+    @{
+        await Html.RenderPartialAsync("_DashboardMenuPartial", new MenuModel { Identifier = "myProfile" });
+    }
+}
+
+@if (TempData["Message"] != null)
+{
+    <partial name="_MessagePartial" model='new MessageModel { Message = TempData["Message"] }' />
+}
+
+<partial name="_DataFormTitlePartial" model='new string("My Profile")' />
+
+<div class="card dataForm">
+    <div class="card-body">
+        <form method="post">
+            <div asp-validation-summary="All"></div>
+            <input asp-for="ProfileData.Id" type="hidden" />
+            <input asp-for="ProfileData.LoginId" type="hidden" />
+            <input asp-for="ProfileData.Password" type="hidden" />
+
+
+            <div class="row">
+                <div class="col-md-4">
+                    <span>Login Id</span>
+                    <input type="text" disabled class="form-control" value="@Model.ProfileData.LoginId" />
+                </div>
+                <div class="col-md-4">
+                    <span>Password</span>
+                    <div>
+                        <a href="@Navigator.ChangePassword">Change Password</a>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <span class="Asterisk">First Name</span><span asp-validation-for="ProfileData.FirstName"></span>
+                    <input type="text" asp-for="ProfileData.FirstName" class="form-control" />
+                </div>
+                <div class="col-md-4">
+                    <span class="Asterisk">Last Name</span><span asp-validation-for="ProfileData.LastName"></span>
+                    <input type="text" asp-for="ProfileData.LastName" class="form-control" />
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-md-4">
+                    <span>Cell Phone</span><span asp-validation-for="ProfileData.Phone"></span>
+                    <input type="text" asp-for="ProfileData.Phone" class="form-control" />
+                </div>
+                <div class="col-md-4">
+                    <span>Email</span><span asp-validation-for="ProfileData.Email"></span>
+                    <input type="email" asp-for="ProfileData.Email" class="form-control" />
+                </div>
+            </div>
+
+            <div class="row border-top p-2">
+
+                <div class="col">
+                    <input type="submit" value="Save" class="btn btn-blueTwo float-right" />
+                    <div>
+                        <strong class="px-2 py-1 btn-blueTwo float-right mr-2" id="SaveMsg" style="display:none">Saving... Please Wait.</strong>
+                    </div>
+                </div>
+            </div>
+            <script src="~/js/ButtonControl.js"></script>
+
+        </form>
+    </div>
+</div>
+
+<partial name="_ValidationScriptsPartial" />
+
+<script>
+    const btn = document.getElementById('accept');
+
+    btn.addEventListener('click', function onClick() {
+        btn.style.backgroundColor = '#DFE2DB';
+        btn.style.border = '#A5A5A5';
+    });
+</script>

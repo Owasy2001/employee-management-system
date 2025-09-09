@@ -1,0 +1,34 @@
+﻿@page
+@model SAASShop.Pages.Attendance.AttendanceModel
+
+@{
+    ViewData["Title"] = "Give Attendance";
+}
+
+@section SideMenu
+{
+    @{
+        await Html.RenderPartialAsync("_DashboardMenuPartial", new MenuModel { Identifier = "takeAttendance" });
+    }
+}
+<partial name="_DataFormTitlePartial" model='new string("Give Attendance")' />
+<div class="card dataForm">
+    <form method="Post">
+        @if (TempData["Message"] != null)
+        {
+            <partial name="_MessagePartial" model='new MessageModel { Message = TempData["Message"] }' />
+        }
+        @if (Model.Exist && !Model.ExistCheckOut)
+        {
+            <div class="col-md-12 text-left">
+                <button type="submit" class="btn btn-redOne ms-2" name="check_out" id="give_attendence">Check Out</button>
+            </div>
+        }
+        else if (!Model.Exist)
+        {
+            <div class="col-md-12 text-left">
+                <button type="submit" class="btn btn-greenOne ms-2" name="check_in" id="give_attendence">Attendance</button>
+            </div>
+        }
+    </form>
+</div>
